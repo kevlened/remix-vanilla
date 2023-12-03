@@ -9,6 +9,8 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import { HighlightInit } from '@highlight-run/remix/client'
+
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ];
@@ -16,6 +18,15 @@ export const links: LinksFunction = () => [
 export default function App() {
   return (
     <html lang="en">
+      {/* commenting out highlight allows the image to render */}
+      <HighlightInit
+        // excludedHostnames={['localhost']}
+        projectId={YOUR_HIGHLIGHT_PROJECT_ID}
+        serviceName="my-remix-frontend"
+        tracingOrigins
+        networkRecording={{ enabled: true, recordHeadersAndBody: true }}
+      />
+
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
